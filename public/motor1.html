@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Motor 1</title>
+
+<style>
+body {
+    text-align: center;
+    margin: 0;
+    background: #2f2f2f;
+    font-family: Arial, sans-serif;
+    color: black;
+}
+
+/* Header */
+.header {
+    background: #9bb24c;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.header h1 {
+    margin: 0;
+}
+
+/* Card */
+.card {
+    background: white;
+    margin: 15px;
+    border-radius: 15px;
+    padding: 15px;
+}
+
+/* Buttons */
+.btn-on {
+    background: red;
+    color: white;
+    padding: 10px 25px;
+    border-radius: 8px;
+    border: none;
+    font-size: 18px;
+}
+
+.btn-off {
+    background: green;
+    color: white;
+    padding: 10px 25px;
+    border-radius: 8px;
+    border: none;
+    font-size: 18px;
+}
+
+/* Home icon */
+.home {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #9bb24c;
+    width: 55px;
+    height: 55px;
+    border-radius: 12px;
+    font-size: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+</style>
+</head>
+
+<body>
+
+<!-- Header -->
+<div class="header">
+    <img src="logo.png" width="40">
+    <h1>Motor 1</h1>
+    <img src="motor.png" width="40">
+</div>
+
+<!-- Voltage & Current -->
+<div class="card">
+    <h3>Voltage & Current</h3>
+
+    <p>
+        Voltage: <span id="voltage">0</span> V
+    </p>
+
+    <p>
+        Current: <span id="current">0</span> A
+    </p>
+</div>
+
+
+<!-- Threshold -->
+<div class="card">
+    <h3>Threshold Setting</h3>
+    Voltage: <input type="number" value="230"><br><br>
+    Current: <input type="number" value="1"><br><br>
+    <button>Edit</button>
+    <button>Update</button>
+    <p>Status: <b style="color:green">Safe</b></p>
+</div>
+
+<!-- Motor control -->
+<div class="card">
+    <h3>Motor Control</h3>
+    <button class="btn-on" onclick="motorControl('ON')">ON</button>
+    <button class="btn-off" onclick="motorControl('OFF')">OFF</button>
+
+    <script>
+    function motorControl(state) {
+    fetch("/api/motor", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ motor: 1, state })
+        });
+    }
+    </script>
+
+</div>
+
+<!-- Home button -->
+<div class="home" onclick="goHome()">🏠</div>
+
+<script>
+function goHome() {
+    window.location.href = "/add-device";
+}
+</script>
+
+<script>
+    setInterval(() => {
+        fetch("/api/sensor")
+        .then(res => res.json())
+        .then(data => {
+        document.getElementById("voltage").innerText = data.voltage;
+        document.getElementById("current").innerText = data.current;
+        });
+    }, 2000); // update every 2 sec
+</script>
+
+</body>
+</html>

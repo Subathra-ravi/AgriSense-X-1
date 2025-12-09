@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgriSenseX - Landing</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #2f2f2f;
+            height: 100vh;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            width: 100%;
+            height: 100vh;
+            position: relative;
+        }
+
+        /* Top clouds */
+        .cloud1 {
+            position: absolute;
+            top: 20px;
+            left: 10px;
+            width: 150px;
+        }
+
+        .cloud2 {
+            position: absolute;
+            top: 120px;
+            right: 0;
+            width: 180px;
+        }
+
+        /* Bottom image */
+        .bottom {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+
+        /* Center logo */
+        .logo-box {
+            width: 160px;
+            height: 160px;
+            background: white;
+            border-radius: 25px;
+            margin: 0 auto;
+            position: absolute;
+            top: 38%;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .logo-box img {
+            width: 120px;
+        }
+
+        
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <img src="cloud1.png" class="cloud1"> 
+        <img src="cloud2.png" class="cloud2"> 
+
+        <div class="logo-box" onclick="goHome()">
+            <img src="logo.png" alt="AgriSenseX Logo">  
+        </div>
+
+        <script>
+        function goHome() {
+            window.location.href = "/home";
+        }
+        </script>
+
+        <img src="bottom.png" class="bottom"> 
+    </div>
+
+    <script>
+        function goHome() {
+            window.location.href = "/home";
+        }
+    </script>
+
+</body>
+</html>

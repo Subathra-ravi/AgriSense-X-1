@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Monitor Page</title>
+
+<style>
+body {
+    margin: 0;
+    background: #2f2f2f;
+    font-family: Arial, sans-serif;
+}
+
+/* Weather card */
+.weather-box {
+    background: #9bb24c;
+    color: black;
+    padding: 12px;
+    text-align: center;
+    font-weight: bold;
+    border-radius: 15px;
+    margin: 15px;
+}
+
+.weather {
+    background: #9bb24c;
+    margin: 15px;
+    border-radius: 20px;
+    padding: 15px;
+    color: black;
+}
+
+.weather h1 {
+    margin: 0;
+    font-size: 40px;
+}
+
+.weather .row {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+/* Toggle buttons */
+.toggle {
+    display: flex;
+    margin: 15px;
+}
+
+.toggle button {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.manual {
+    background: #9bb24c;
+    border-radius: 10px 0 0 10px;
+}
+
+.auto {
+    background: #d0896f;
+    border-radius: 0 10px 10px 0;
+}
+
+.toggle {
+    display: flex;
+    margin: 15px;
+    background: #444;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.toggle button {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.toggle button.active {
+    background: #9bb24c;
+    color: black;
+}
+
+.toggle button:not(.active) {
+    background: #d0896f;
+    color: black;
+}
+
+
+
+/* Motors */
+.motors {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    padding: 15px;
+}
+
+.motor {
+    background: white;
+    border-radius: 20px;
+    padding: 15px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.motor img {
+    width: 80px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- Weather card -->
+<div class="weather-box">
+    <p>Temperature: <span id="temp">--</span> °C</p>
+    <p>Sunrise: <span id="sunrise">--</span></p>
+    <p>Sunset: <span id="sunset">--</span></p>
+
+    <div class="row">
+        <span>Humidity: 41%</span>
+        <span>Wind: 2 km/h</span>
+    </div>
+    <div class="row">
+        <span>Pressure: 997 hPa</span>
+        <span>UV: 8</span>
+    </div>
+</div>
+
+<!-- Manual / Auto -->
+<div class="toggle">
+    <button id="manualBtn" class="active" onclick="setMode('manual')">Manual</button>
+    <button id="autoBtn" onclick="setMode('auto')">Auto</button>
+</div>
+<script>
+function setMode(mode) {
+    const manual = document.getElementById("manualBtn");
+    const auto = document.getElementById("autoBtn");
+
+    if (mode === "manual") {
+        manual.classList.add("active");
+        auto.classList.remove("active");
+        manual.parentNode.prepend(manual);
+    } else {
+        auto.classList.add("active");
+        manual.classList.remove("active");
+        auto.parentNode.prepend(auto);
+    }
+}
+</script>
+
+
+<!-- Motor cards -->
+<div class="motors">
+
+    <div class="motor" onclick="goMotor1()">
+    <img src="motor.png"><br>Motor 1
+    </div>
+    <script>
+    function goMotor1() {
+        window.location.href = "/motor1";
+        }
+    </script>
+    <script>
+        fetch("/api/weather")
+            .then(res => res.json())
+            .then(data => {
+            document.getElementById("temp").innerText = data.temp;
+            document.getElementById("sunrise").innerText = data.sunrise;
+            document.getElementById("sunset").innerText = data.sunset;
+            })
+        .catch(() => {
+        console.log("Weather data error");
+        });
+    </script>
+
+
+
+    <div class="motor">
+        <img src="motor.png"><br>Motor 2
+    </div>
+    <div class="motor">
+        <img src="motor.png"><br>Motor 3
+    </div>
+    <div class="motor">
+        <img src="motor.png"><br>Motor 4
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Add Device</title>
+
+<style>
+body {
+    margin: 0;
+    background: #2f2f2f;
+    font-family: Arial, sans-serif;
+    color: black;
+}
+
+/* Header */
+.header {
+    background: #9bb24c;
+    padding: 15px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+/* Menu list */
+.menu {
+    padding: 20px;
+}
+
+.item {
+    background: #9bb24c;
+    margin-bottom: 15px;
+    padding: 15px;
+    border-radius: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.item span {
+    font-size: 24px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- Top Header -->
+<div class="header">
+    <img src="header.png" style="width:100%">
+</div>
+
+<!-- Menu Items -->
+<div class="menu">
+
+    <div class="item" onclick="goMonitor()">
+    Motor Control <span>🤖</span>
+    </div>
+
+    <script>
+    function goMonitor() {
+        window.location.href = "/monitor";
+    }
+    </script>
+
+    <div class="item">Water Monitoring <span>🚰</span></div>
+    <div class="item">Weather Station <span>🌦️</span></div>
+    <div class="item">Auto Scheduling <span>📅</span></div>
+    <div class="item">Fertigation Mode <span>🧪</span></div>
+</div>
+
+</body>
+</html>
