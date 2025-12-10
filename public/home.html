@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title> Farm</title>
+<title>Farm</title>
 
 <style>
 body {
@@ -14,33 +14,33 @@ body {
     text-align: center;
 }
 
-/* Top farm image */
+/* ✅ Top banner */
 .top {
+    width: 100%;
     background: #9bb24c;
-    padding: 20px;
 }
 
 .top img {
     width: 100%;
-    max-height: 280px;
-    object-fit: contain;
+    height: 180px;          /* banner height */
+    object-fit: cover;     /* banner look */
 }
 
-/* Title */
+/* Title over banner */
 .title {
     font-size: 20px;
     font-weight: bold;
-    margin-top: 10px;
+    padding: 10px 0;
 }
 
-/* Center illustration */
+/* ✅ Center illustration (smaller plant) */
 .center-img {
-    margin-top: 40px;
+    margin-top: 30px;
 }
 
 .center-img img {
-    width: 80%;
-    max-width: 300px;
+    width: 55%;             /* reduced size */
+    max-width: 200px;
 }
 
 /* Text */
@@ -83,13 +83,13 @@ body {
 
 <body>
 
-<!-- Top farm section -->
+<!-- ✅ Top banner -->
 <div class="top">
-    <img src="farm.png" alt="Farm Image">
-    <div class="title">Egroots'S FARM</div>
+    <img src="farm.png" alt="Farm Banner">
+    <div class="title">EGROOTS' FARM</div>
 </div>
 
-<!-- Center image -->
+<!-- ✅ Center image -->
 <div class="center-img">
     <img src="plant.png" alt="Plant Image">
 </div>
@@ -102,6 +102,7 @@ body {
 <!-- Floating buttons -->
 <div class="settings-btn">⚙</div>
 <div class="plus-btn" onclick="goAddDevice()">+</div>
+
 <script>
 function goAddDevice() {
     window.location.href = "add-device.html";
