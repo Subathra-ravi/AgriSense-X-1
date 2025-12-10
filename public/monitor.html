@@ -11,62 +11,100 @@ body {
     background: #2f2f2f;
     font-family: Arial, sans-serif;
 }
-
-/* Weather card */
-.weather-box {
-    background: #9bb24c;
-    color: black;
-    padding: 12px;
-    text-align: center;
-    font-weight: bold;
-    border-radius: 15px;
+.weather-card{
+    background:#a8b65a;
     margin: 15px;
+    border-radius:20px;
+    padding:15px;
+    display:flex;
+    justify-content:space-between;
+    
+    color:#111;
 }
 
-.weather {
-    background: #9bb24c;
-    margin: 15px;
-    border-radius: 20px;
-    padding: 15px;
-    color: black;
+
+/* LEFT */
+.left{
+    width:28%;
 }
 
-.weather h1 {
-    margin: 0;
-    font-size: 40px;
+.temp{
+    font-size:42px;
+    font-weight:bold;
 }
 
-.weather .row {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 10px;
+.status{
+    margin-top:10px;
+    font-size:20px;
+    font-weight:bold;
+}
+
+/* CENTER */
+.center{
+    width:28%;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:18px;
+}
+
+.sun-box{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-size:14px;
+}
+
+/* icons */
+.icon{
+    width:24px;
+    height:24px;
+    stroke:#111;
+    fill:none;
+    stroke-width:2;
+}
+
+.label{
+    font-size:12px;
+}
+
+/* RIGHT */
+.right{
+    width:36%;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:14px;
+}
+
+.data{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    font-size:13px;
+}
+
+.data b{
+    font-size:16px;
+}
+
+/* ✅ Mobile friendly */
+@media(max-width:768px){
+    .weather-card{
+        flex-direction:column;
+        text-align:center;
+        gap:20px;
+    }
+
+    .left, .center, .right{
+        width:100%;
+    }
+
+    .right{
+        grid-template-columns:1fr 1fr;
+    }
 }
 
 /* Toggle buttons */
-.toggle {
-    display: flex;
-    margin: 15px;
-}
-
-.toggle button {
-    flex: 1;
-    padding: 12px;
-    border: none;
-    font-size: 18px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.manual {
-    background: #9bb24c;
-    border-radius: 10px 0 0 10px;
-}
-
-.auto {
-    background: #d0896f;
-    border-radius: 0 10px 10px 0;
-}
-
 .toggle {
     display: flex;
     margin: 15px;
@@ -96,7 +134,6 @@ body {
 }
 
 
-
 /* Motors */
 .motors {
     display: grid;
@@ -121,21 +158,83 @@ body {
 
 <body>
 
-<!-- Weather card -->
-<div class="weather-box">
-    <p>Temperature: <span id="temp">--</span> °C</p>
-    <p>Sunrise: <span id="sunrise">--</span></p>
-    <p>Sunset: <span id="sunset">--</span></p>
+<div class="weather-card">
 
-    <div class="row">
-        <span>Humidity: 41%</span>
-        <span>Wind: 2 km/h</span>
+  <!-- LEFT PANEL -->
+  <div class="left">
+    <div class="temp">
+      <span id="temp">--</span>°C
     </div>
-    <div class="row">
-        <span>Pressure: 997 hPa</span>
-        <span>UV: 8</span>
+    <div class="status" id="condition">Sunny</div>
+  </div>
+
+  <!-- ✅ CENTER PANEL (FIXED) -->
+  <div class="center">
+
+    <div class="sun-box">
+      <svg class="icon" viewBox="0 0 24 24">
+        <path d="M12 2v6M4 14h16"/>
+      </svg>
+      <div>
+        <div class="label">Sunrise</div>
+        <b id="sunrise">--</b>
+      </div>
     </div>
+
+    <div class="sun-box">
+      <svg class="icon" viewBox="0 0 24 24">
+        <path d="M12 22v-6M4 10h16"/>
+      </svg>
+      <div>
+        <div class="label">Sunset</div>
+        <b id="sunset">--</b>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- RIGHT PANEL -->
+  <div class="right">
+
+    <div class="data">
+      <svg class="icon" viewBox="0 0 24 24">
+        <path d="M12 2C8 7 6 10 6 14a6 6 0 0012 0"/>
+      </svg>
+      <b>41%</b>
+      <span>Humidity</span>
+    </div>
+
+    <div class="data">
+      <svg class="icon" viewBox="0 0 24 24">
+        <path d="M3 12h15M6 6h12M6 18h12"/>
+      </svg>
+      <b>2 km/h</b>
+      <span>Wind</span>
+    </div>
+
+    <div class="data">
+      <svg class="icon" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="9"/>
+        <path d="M12 7v6l4 2"/>
+      </svg>
+      <b>997 hPa</b>
+      <span>Pressure</span>
+    </div>
+
+    <div class="data">
+      <svg class="icon" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="9"/>
+        <text x="8" y="16" font-size="8">UV</text>
+      </svg>
+      <b>8</b>
+      <span>UV</span>
+    </div>
+
+  </div>
+
 </div>
+
+
 
 <!-- Manual / Auto -->
 <div class="toggle">
@@ -171,18 +270,25 @@ function setMode(mode) {
         window.location.href = "motor1.html";
         }
     </script>
+    
     <script>
-        fetch("/api/weather")
-            .then(res => res.json())
-            .then(data => {
-            document.getElementById("temp").innerText = data.temp;
-            document.getElementById("sunrise").innerText = data.sunrise;
-            document.getElementById("sunset").innerText = data.sunset;
-            })
-        .catch(() => {
-        console.log("Weather data error");
-        });
-    </script>
+fetch("/api/weather")
+  .then(res => res.json())
+  .then(data => {
+    // Temperature
+    document.getElementById("temp").innerText = data.temp;
+
+    // Sunrise & Sunset
+    document.getElementById("sunrise").innerText = data.sunrise;
+    document.getElementById("sunset").innerText = data.sunset;
+
+    // If you want to add condition in backend:
+    if (data.condition) {
+      document.getElementById("condition").innerText = data.condition;
+    }
+  })
+  .catch(err => console.log("Weather API Error:", err));
+</script>
 
 
 
