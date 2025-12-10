@@ -13,13 +13,21 @@ body {
     color: black;
 }
 
-/* Header */
+/* ✅ Header banner */
 .header {
     background: #9bb24c;
-    padding: 15px;
+    height: 180px;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
+    overflow: hidden;
 }
+
+.header img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
 
 /* Menu list */
 .menu {
@@ -47,29 +55,31 @@ body {
 
 <body>
 
-<!-- Top Header -->
+<!-- Top Banner -->
 <div class="header">
-    <img src="header.png" style="width:100%">
+    <img src="header.png" alt="AgriSenseX Header Banner">
 </div>
+
 
 <!-- Menu Items -->
 <div class="menu">
 
     <div class="item" onclick="goMonitor()">
-    Motor Control <span>🤖</span>
+        Motor Control <span>🤖</span>
     </div>
-
-    <script>
-    function goMonitor() {
-        window.location.href = "monitor.html";
-    }
-    </script>
 
     <div class="item">Water Monitoring <span>🚰</span></div>
     <div class="item">Weather Station <span>🌦️</span></div>
     <div class="item">Auto Scheduling <span>📅</span></div>
     <div class="item">Fertigation Mode <span>🧪</span></div>
+
 </div>
+
+<script>
+function goMonitor() {
+    window.location.href = "monitor.html";
+}
+</script>
 
 </body>
 </html>
