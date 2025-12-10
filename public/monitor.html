@@ -11,17 +11,17 @@ body {
     background: #2f2f2f;
     font-family: Arial, sans-serif;
 }
+
+/* WEATHER CARD */
 .weather-card{
     background:#a8b65a;
-    margin: 15px;
-    border-radius:20px;
-    padding:15px;
+    margin: 10px;              
+    border-radius:16px;        
+    padding:10px;              
     display:flex;
     justify-content:space-between;
-    
     color:#111;
 }
-
 
 /* LEFT */
 .left{
@@ -29,13 +29,13 @@ body {
 }
 
 .temp{
-    font-size:42px;
+    font-size:32px;            
     font-weight:bold;
 }
 
 .status{
-    margin-top:10px;
-    font-size:20px;
+    margin-top:6px;
+    font-size:16px;            
     font-weight:bold;
 }
 
@@ -45,27 +45,27 @@ body {
     display:flex;
     flex-direction:column;
     align-items:center;
-    gap:18px;
+    gap:12px;                  
 }
 
 .sun-box{
     display:flex;
     align-items:center;
-    gap:10px;
-    font-size:14px;
+    gap:8px;
+    font-size:12px;
 }
 
 /* icons */
 .icon{
-    width:24px;
-    height:24px;
+    width:20px;                
+    height:20px;
     stroke:#111;
     fill:none;
     stroke-width:2;
 }
 
 .label{
-    font-size:12px;
+    font-size:11px;
 }
 
 /* RIGHT */
@@ -73,18 +73,18 @@ body {
     width:36%;
     display:grid;
     grid-template-columns:1fr 1fr;
-    gap:14px;
+    gap:10px;                  
 }
 
 .data{
     display:flex;
     flex-direction:column;
     align-items:center;
-    font-size:13px;
+    font-size:11px;            
 }
 
 .data b{
-    font-size:16px;
+    font-size:14px;           
 }
 
 /* ✅ Mobile friendly */
@@ -92,7 +92,7 @@ body {
     .weather-card{
         flex-direction:column;
         text-align:center;
-        gap:20px;
+        gap:12px;
     }
 
     .left, .center, .right{
@@ -133,7 +133,6 @@ body {
     color: black;
 }
 
-
 /* Motors */
 .motors {
     display: grid;
@@ -151,7 +150,7 @@ body {
 }
 
 .motor img {
-    width: 80px;
+    width: 70px;               /* slightly reduced */
 }
 </style>
 </head>
@@ -160,87 +159,38 @@ body {
 
 <div class="weather-card">
 
-  <!-- LEFT PANEL -->
   <div class="left">
-    <div class="temp">
-      <span id="temp">--</span>°C
-    </div>
+    <div class="temp"><span id="temp">--</span>°C</div>
     <div class="status" id="condition">Sunny</div>
   </div>
 
-  <!-- ✅ CENTER PANEL (FIXED) -->
   <div class="center">
-
     <div class="sun-box">
-      <svg class="icon" viewBox="0 0 24 24">
-        <path d="M12 2v6M4 14h16"/>
-      </svg>
-      <div>
-        <div class="label">Sunrise</div>
-        <b id="sunrise">--</b>
-      </div>
+      <svg class="icon" viewBox="0 0 24 24"><path d="M12 2v6M4 14h16"/></svg>
+      <div><div class="label">Sunrise</div><b id="sunrise">--</b></div>
     </div>
 
     <div class="sun-box">
-      <svg class="icon" viewBox="0 0 24 24">
-        <path d="M12 22v-6M4 10h16"/>
-      </svg>
-      <div>
-        <div class="label">Sunset</div>
-        <b id="sunset">--</b>
-      </div>
+      <svg class="icon" viewBox="0 0 24 24"><path d="M12 22v-6M4 10h16"/></svg>
+      <div><div class="label">Sunset</div><b id="sunset">--</b></div>
     </div>
-
   </div>
 
-  <!-- RIGHT PANEL -->
   <div class="right">
-
-    <div class="data">
-      <svg class="icon" viewBox="0 0 24 24">
-        <path d="M12 2C8 7 6 10 6 14a6 6 0 0012 0"/>
-      </svg>
-      <b>41%</b>
-      <span>Humidity</span>
-    </div>
-
-    <div class="data">
-      <svg class="icon" viewBox="0 0 24 24">
-        <path d="M3 12h15M6 6h12M6 18h12"/>
-      </svg>
-      <b>2 km/h</b>
-      <span>Wind</span>
-    </div>
-
-    <div class="data">
-      <svg class="icon" viewBox="0 0 24 24">
-        <circle cx="12" cy="12" r="9"/>
-        <path d="M12 7v6l4 2"/>
-      </svg>
-      <b>997 hPa</b>
-      <span>Pressure</span>
-    </div>
-
-    <div class="data">
-      <svg class="icon" viewBox="0 0 24 24">
-        <circle cx="12" cy="12" r="9"/>
-        <text x="8" y="16" font-size="8">UV</text>
-      </svg>
-      <b>8</b>
-      <span>UV</span>
-    </div>
-
+    <div class="data"><b>41%</b><span>Humidity</span></div>
+    <div class="data"><b>2 km/h</b><span>Wind</span></div>
+    <div class="data"><b>997 hPa</b><span>Pressure</span></div>
+    <div class="data"><b>8</b><span>UV</span></div>
   </div>
 
 </div>
-
-
 
 <!-- Manual / Auto -->
 <div class="toggle">
     <button id="manualBtn" class="active" onclick="setMode('manual')">Manual</button>
     <button id="autoBtn" onclick="setMode('auto')">Auto</button>
 </div>
+
 <script>
 function setMode(mode) {
     const manual = document.getElementById("manualBtn");
@@ -249,59 +199,46 @@ function setMode(mode) {
     if (mode === "manual") {
         manual.classList.add("active");
         auto.classList.remove("active");
-        manual.parentNode.prepend(manual);
+
+        manual.parentNode.prepend(manual); // move manual first
     } else {
         auto.classList.add("active");
         manual.classList.remove("active");
-        auto.parentNode.prepend(auto);
+
+        auto.parentNode.prepend(auto); // move auto first
     }
 }
 </script>
 
 
-<!-- Motor cards -->
+<!-- Motors -->
 <div class="motors">
-
     <div class="motor" onclick="goMotor1()">
     <img src="motor.png"><br>Motor 1
     </div>
-    <script>
-    function goMotor1() {
-        window.location.href = "motor1.html";
-        }
-    </script>
-    
-    <script>
+
+    <div class="motor"><img src="motor.png"><br>Motor 2</div>
+    <div class="motor"><img src="motor.png"><br>Motor 3</div>
+    <div class="motor"><img src="motor.png"><br>Motor 4</div>
+</div>
+<script>
+function goMotor1() {
+    window.location.href = "motor1.html";
+}
+</script>
+<script>
 fetch("/api/weather")
   .then(res => res.json())
   .then(data => {
-    // Temperature
     document.getElementById("temp").innerText = data.temp;
-
-    // Sunrise & Sunset
     document.getElementById("sunrise").innerText = data.sunrise;
     document.getElementById("sunset").innerText = data.sunset;
-
-    // If you want to add condition in backend:
-    if (data.condition) {
-      document.getElementById("condition").innerText = data.condition;
-    }
   })
-  .catch(err => console.log("Weather API Error:", err));
+  .catch(() => {
+    console.log("Weather data error");
+  });
 </script>
 
-
-
-    <div class="motor">
-        <img src="motor.png"><br>Motor 2
-    </div>
-    <div class="motor">
-        <img src="motor.png"><br>Motor 3
-    </div>
-    <div class="motor">
-        <img src="motor.png"><br>Motor 4
-    </div>
-</div>
 
 </body>
 </html>
