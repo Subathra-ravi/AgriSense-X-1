@@ -214,16 +214,37 @@ function setMode(mode) {
 <!-- Motors -->
 <div class="motors">
     <div class="motor" onclick="goMotor1()">
-    <img src="motor.png"><br>Motor 1
+        <img src="motor.png"><br>Motor 1
     </div>
 
-    <div class="motor"><img src="motor.png"><br>Motor 2</div>
-    <div class="motor"><img src="motor.png"><br>Motor 3</div>
-    <div class="motor"><img src="motor.png"><br>Motor 4</div>
+    <div class="motor" onclick="goMotor2()">
+        <img src="motor.png"><br>Motor 2
+    </div>
+    <div class="motor" onclick="goMotor3()">
+        <img src="motor.png"><br>Motor 3
+    </div>
+    <div class="motor" onclick="goMotor4()">
+        <img src="motor.png"><br>Motor 4
+    </div>
 </div>
 <script>
 function goMotor1() {
     window.location.href = "motor1.html";
+}
+</script>
+<script>
+function goMotor2() {
+    window.location.href = "motor2.html";
+}
+</script>
+<script>
+function goMotor3() {
+    window.location.href = "motor3.html";
+}
+</script>
+<script>
+function goMotor4() {
+    window.location.href = "motor4.html";
 }
 </script>
 <script>
