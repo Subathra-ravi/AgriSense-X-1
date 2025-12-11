@@ -105,6 +105,18 @@ app.get("/motor1", (req, res) =>
   res.sendFile(path.join(__dirname, "../public/motor1.html"))
 );
 
+app.get("/motor2", (req, res) =>
+  res.sendFile(path.join(__dirname, "../public/motor2.html"))
+);
+
+app.get("/motor3", (req, res) =>
+  res.sendFile(path.join(__dirname, "../public/motor3.html"))
+);
+
+app.get("/motor4", (req, res) =>
+  res.sendFile(path.join(__dirname, "../public/motor4.html"))
+);
+
 // ✅ Start server
 app.listen(3000, () => {
   console.log("✅ Server running on http://localhost:3000");
