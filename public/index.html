@@ -35,20 +35,13 @@
         width: 130px;   
     }
 
-   .bottom {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 140px;
-    object-fit: cover;
-    z-index: 1;
-}
+   
 
 .vector-left {
     position: absolute;
     bottom: 0;      /* FIXED for mobile */
     left: 10px;
-    width: 90px;
+    width: 160px;
     z-index: 2;
 }
 
@@ -56,28 +49,27 @@
     position: absolute;
     bottom: 0;      /* FIXED for mobile */
     right: 10px;
-    width: 110px;
+    width: 140px;
     z-index: 2;
 }
 
 /* 🔥 MOBILE FIX */
 @media (max-width: 600px) {
 
-    .bottom {
-        height: 160px;     
+       
 
     .vector-left {
-        width: 70px;
+        width: 160px;
         bottom: 0;         
         left: 5px;
     }
 
     .rock-right {
-        width: 90px;
+        width: 140px;
         bottom: 0;         
         right: 5px;
     }
-}
+
 }
 
     /* Center logo */
@@ -119,7 +111,7 @@
     <!-- Bottom elements -->
     <img src="vector.png" class="vector-left">  
     <img src="rock.png" class="rock-right">      
-    <img src="bottom.png" class="bottom">       
+         
 
 </div>
 
