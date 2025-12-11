@@ -160,19 +160,19 @@ body {
 <div class="weather-card">
 
   <div class="left">
-    <div class="temp"><span id="temp">--</span>°C</div>
+    <h3>32 °C</h3>
     <div class="status" id="condition">Sunny</div>
   </div>
 
   <div class="center">
     <div class="sun-box">
       <svg class="icon" viewBox="0 0 24 24"><path d="M12 2v6M4 14h16"/></svg>
-      <div><div class="label">Sunrise</div><b id="sunrise">--</b></div>
+      <div><div class="label">Sunrise </div><p>06.30 AM</p></div>
     </div>
 
     <div class="sun-box">
       <svg class="icon" viewBox="0 0 24 24"><path d="M12 22v-6M4 10h16"/></svg>
-      <div><div class="label">Sunset</div><b id="sunset">--</b></div>
+      <div><div class="label">Sunset </div><p>06.00 pm</p></div>
     </div>
   </div>
 
@@ -246,25 +246,6 @@ function goMotor3() {
 function goMotor4() {
     window.location.href = "motor4.html";
 }
-</script>
-<script>
-const backend = "https://agrisense-x.onrender.com";
-
-fetch(`${backend}/api/weather`)
-  .then(res => {
-    if (!res.ok) {
-      throw new Error("API returned " + res.status);
-    }
-    return res.json();
-  })
-  .then(data => {
-    document.getElementById("temp").innerText = data.temp;
-    document.getElementById("sunrise").innerText = data.sunrise;
-    document.getElementById("sunset").innerText = data.sunset;
-  })
-  .catch(err => {
-    console.log("Weather data error:", err);
-  });
 </script>
 
 
