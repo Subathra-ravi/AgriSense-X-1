@@ -150,7 +150,7 @@ body {
 }
 
 .motor img {
-    width: 70px;               /* slightly reduced */
+    width: 70px;               
 }
 </style>
 </head>
@@ -200,12 +200,12 @@ function setMode(mode) {
         manual.classList.add("active");
         auto.classList.remove("active");
 
-        manual.parentNode.prepend(manual); // move manual first
+        manual.parentNode.prepend(manual); 
     } else {
         auto.classList.add("active");
         manual.classList.remove("active");
 
-        auto.parentNode.prepend(auto); // move auto first
+        auto.parentNode.prepend(auto); 
     }
 }
 </script>
@@ -248,17 +248,25 @@ function goMotor4() {
 }
 </script>
 <script>
-fetch("/api/weather")
-  .then(res => res.json())
+const backend = "https://agrisense-x.onrender.com";
+
+fetch(`${backend}/api/weather`)
+  .then(res => {
+    if (!res.ok) {
+      throw new Error("API returned " + res.status);
+    }
+    return res.json();
+  })
   .then(data => {
     document.getElementById("temp").innerText = data.temp;
     document.getElementById("sunrise").innerText = data.sunrise;
     document.getElementById("sunset").innerText = data.sunset;
   })
-  .catch(() => {
-    console.log("Weather data error");
+  .catch(err => {
+    console.log("Weather data error:", err);
   });
 </script>
+
 
 
 </body>
